@@ -1,0 +1,26 @@
+SELECT DISTINCT meta_value
+FROM wp_usermeta
+WHERE meta_key = '_available_date_title';
+
+
+
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(meta_value, '";s:10:"', -1), '";', 1) AS extracted_date
+FROM wp_usermeta
+WHERE meta_key = '_available_date_title'
+AND meta_value LIKE '%";s:10:"%';
+
+
+
+
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(meta_value, '";s:10:"', -1), '";', 1) AS available_date
+FROM wp_usermeta
+WHERE meta_value LIKE '%";s:10:"%'
+AND meta_value REGEXP '";s:10:"[^"]*-[0-9]{2}-[0-9]{2}"';
+
+
+
+
+
+//Partybff Date repeater Query
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(field_value, '"_available_date":"', -1),  '"}' , 1) AS available_date
+FROM `tue_jet_fb_records_fields` WHERE `field_name` = '_available_date_title' AND field_value LIKE '%_available_date%';
