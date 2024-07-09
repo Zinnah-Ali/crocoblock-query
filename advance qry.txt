@@ -24,3 +24,13 @@ AND meta_value REGEXP '";s:10:"[^"]*-[0-9]{2}-[0-9]{2}"';
 //Partybff Date repeater Query
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(field_value, '"_available_date":"', -1),  '"}' , 1) AS available_date
 FROM `tue_jet_fb_records_fields` WHERE `field_name` = '_available_date_title' AND field_value LIKE '%_available_date%';
+
+
+
+
+
+
+//Better Message profile shorcode
+<span class="message-icon"><i class="fa-regular fa-comment"></i></span>
+
+[better_messages_pm_button text="הודעה" subject="Have a question to you" message="שלום" target="_self" class="message-btn-class" fast_start="0" url_only="0"]
